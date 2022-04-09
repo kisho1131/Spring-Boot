@@ -9,7 +9,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-
     <groupId>com.javabrains</groupId>
     <artifactId>spring-boot-quick-start</artifactId>
     <version>0.0.1-SNAPSHOT</version>

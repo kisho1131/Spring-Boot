@@ -14,5 +14,4 @@ public class HelloController {
     public String greeting(){
         return  "Hey, GoodAfter Noon Dude :))";
     }
-
 }
