@@ -8,14 +8,18 @@
         <version>2.6.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+
     <groupId>com.javabrains</groupId>
     <artifactId>spring-boot-quick-start</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-quick-start</name>
     <description>spring-boot-quick-start</description>
+
     <properties>
-        <java.version>11</java.version>
+        <java.version>13</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -37,5 +41,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

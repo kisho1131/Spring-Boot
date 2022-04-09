@@ -25,6 +25,7 @@ public class TopicService {
         topics.add(topic);
     }
 
+    /* Function to update the Topic List with the given id */
     public void updateTopic(Topic topic, String id) {
         for(int i =0;i<topics.size(); i++){
             Topic t = topics.get(i);
@@ -34,7 +35,6 @@ public class TopicService {
             }
         }
     }
-
 
     public void deleteTopic(String id) {
         topics.removeIf(t-> t.getId().equals(id));

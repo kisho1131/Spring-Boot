@@ -10,4 +10,9 @@ public class HelloController {
         return  "Welcome to SpringBoot Rest Controller :) ";
     }
 
+    @RequestMapping("/greeting")
+    public String greeting(){
+        return  "Hey, GoodAfter Noon Dude :))";
+    }
+
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class TopicController {
 
     @Autowired
-    private TopicService topicService;
+    public TopicService topicService;
 
     @RequestMapping("/topics")
     public List<Topic> getAllTopics(){
@@ -20,6 +20,7 @@ public class TopicController {
     public Topic getTopic(@PathVariable String id){
         return topicService.getTopic(id);
     }
+
     @RequestMapping(method = RequestMethod.POST, value = "/topics")
     public void addTopics(@RequestBody Topic topic){
         topicService.addTopic(topic);
