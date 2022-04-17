@@ -14,16 +14,16 @@ public class CourseController {
 
     @RequestMapping("/topic/{id}/courses")
     public List<Course> getAllCourses(@PathVariable String id){
-        return courseService.getAllCourses();
+        return courseService.getAllCourses(id);
     }
 
-    @RequestMapping("/topics/{topicId}/courses{id}")
+    @RequestMapping("/topics/{topicId}/courses/{id}")
     public Course getCourse(@PathVariable String id){
 
         return courseService.getCourse(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses/{courseId}")
+    @RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses")
     public void addCourse(@RequestBody Course course, @PathVariable String topicId){
         course.setTopic(new Topic(topicId, "", ""));
         courseService.addCourse(course);

@@ -4,6 +4,7 @@ import com.springboot.topic.Topic;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Course {
@@ -12,6 +13,8 @@ public class Course {
     private String name;
     private String description;
 
+    /* Maps from many courses to one topic. There can be many courses associated with one topic */
+    @ManyToOne
     private Topic topic;
 
     public Course(){

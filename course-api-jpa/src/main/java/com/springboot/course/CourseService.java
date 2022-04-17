@@ -13,19 +13,10 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    /* Commenting the Hard coded values
-    private final List<Topic> topics = new ArrayList<>(Arrays.asList(
-            new Topic("spring", "Spring Framework", "Spring Framework Description"),
-            new Topic("Python", "Django Framework", "Django Framework Description"),
-            new Topic("Php", "Laravel Framework", "Laravel Framework Description")
-    ));
-     */
-
-    public List<Course> getAllCourses(){
+    public List<Course> getAllCourses(String topicId){
         // return topics;
         List<Course> courses = new ArrayList<>();
-
-        courseRepository.findAll().forEach(courses:: add);
+        courseRepository.findByTopicId(topicId).forEach(courses::add);
         return courses;
     }
     public Course getCourse(String id){
