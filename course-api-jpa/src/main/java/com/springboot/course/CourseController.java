@@ -12,13 +12,13 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping("/topic/{id}/courses")
+    @RequestMapping("/topics/{id}/courses")
     public List<Course> getAllCourses(@PathVariable String id){
         return courseService.getAllCourses(id);
     }
 
     @RequestMapping("/topics/{topicId}/courses/{id}")
-    public Course getCourse(@PathVariable String id){
+    public Course getCourse(@PathVariable String id, @PathVariable String topicId){
 
         return courseService.getCourse(id);
     }
@@ -30,14 +30,14 @@ public class CourseController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/topics/{topicId}/courses/{courseId}")
-    public void updateCourse(@RequestBody Course course, @PathVariable String id, @PathVariable String topicId){
+    public void updateCourse(@RequestBody Course course, @PathVariable String id, @PathVariable String topicId, @PathVariable String courseId){
         course.setTopic(new Topic(topicId, "", ""));
         courseService.updateCourses(course);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/topics/{topicId}/courses/{courseId}")
-    public void deleteTopic(@PathVariable String id){
+    public void deleteTopic(@PathVariable String topicId, @PathVariable String courseId){
 
-        courseService.deleteCourses(id);
+        courseService.deleteCourses(courseId);
     }
 }
