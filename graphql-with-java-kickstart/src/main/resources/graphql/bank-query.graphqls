@@ -1,0 +1,5 @@
+type Query{
+
+    #Query to test GraphQL with graphql-kickstart-java
+    testBankQuery: String
+}

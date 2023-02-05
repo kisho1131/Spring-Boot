@@ -1,0 +1,97 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8081
+
+# GraphQl Servlet Configuration
+graphql:
+  servlet:
+    # Sets if GraphQL servlet should be created and exposed. If not specified defaults to "true".
+    enabled: true
+    # Sets the path where GraphQL servlet will be exposed. If not specified defaults to "/graphql"
+    mapping: /graphql
+    cors-enabled: false
+#    cors:
+#      allowed-origins: http://some.domain.com
+#      allowed-methods: GET, HEAD, POST
+#    # if you want to @ExceptionHandler annotation for custom GraphQLErrors
+#    exception-handlers-enabled: true
+#    context-setting: PER_REQUEST_WITH_INSTRUMENTATION
+#    # Sets if asynchronous operations are supported for GraphQL requests. If not specified defaults to true.
+#    async-mode-enabled: true
+---
+
+# GraphiQL Configuration
+graphql:
+  graphiql:
+    mapping: /graphiql
+    endpoint:
+      graphql: /graphql
+      subscriptions: /subscriptions
+    subscriptions:
+      timeout: 30
+      reconnect: false
+    basePath: /
+    enabled: true
+    pageTitle: GraphiQL
+    cdn:
+      enabled: true
+      version: latest
+    props:
+      resources:
+        query: query.graphql
+        defaultQuery: defaultQuery.graphql
+        variables: variables.json
+      variables:
+        editorTheme: "solarized light"
+---
+
+# AltAir Configuration
+graphql:
+  altair:
+    enabled: true
+    mapping: /altair
+    subscriptions:
+      timeout: 30
+      reconnect: false
+    static:
+      base-path: /
+    page-title: Altair
+    cdn:
+      enabled: true
+      version: 4.0.2
+    options:
+      endpoint-url: /graphql
+      subscriptions-endpoint: /subscriptions
+      initial-settings:
+        theme: dracula
+#      initial-headers:
+#        Authorization: "Bearer <your-token>"
+#    resources:
+#      initial-query: defaultQuery.graphql
+#      initial-variables: variables.graphql
+#      initial-pre-request-script: pre-request.graphql
+#      initial-post-request-script: post-request.graphql
+---
+
+# Voyager Configuration
+graphql:
+  voyager:
+    enabled: true
+    basePath: /
+    mapping: /voyager
+    endpoint: /graphql
+    cdn:
+      enabled: true
+      version: latest
+    pageTitle: Voyager
+    displayOptions:
+      skipRelay: true
+      skipDeprecated: true
+      rootType: Query
+      sortByAlphabet: false
+      showLeafFields: true
+      hideRoot: false
+    hideDocs: false
+    hideSettings: false

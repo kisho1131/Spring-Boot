@@ -1,0 +1,32 @@
+CREATE OR REPLACE PROCEDURE SPRINGBATCH."SPRINGBATCH_METADATA_CLEANUP" IS
+  FHANDLE           UTL_FILE.FILE_TYPE;
+  DIR_NAME_IN       VARCHAR2(200);
+  LOGFILE1_IN       VARCHAR2(200);
+  TODAY_DATE        DATE;
+  AGO_SIX_MONTH_DATE            DATE;
+  v_code  NUMBER;
+  v_errm  VARCHAR2(200);
+
+  type JOB_INSTANCE_ID_T is table of SPRINGBATCH.BATCH_JOB_INSTANCE  .JOB_INSTANCE_ID%TYPE index by PLS_INTEGER;
+  JOB_INSTANCE_IDS  JOB_INSTANCE_ID_T;
+
+-- --------------------------------------------------------------------------------------------------------------
+-- Data purge procedure to drop SPRING BATCH metadata tables
+-- -------------------------------------------------------------------------------------------------------------
+BEGIN
+
+-- get today's date and open a file to log procedure progress
+     SELECT SYSDATE INTO TODAY_DATE FROM DUAL;
+
+     -- variables for all old dates
+     select add_months(TODAY_DATE,-6)   into AGO_SIX_MONTH_DATE from dual;
+
+
+    --  NAME OF THE LOG FILE DIRECTORY
+     DIR_NAME_IN := '/oracle/local/logs';
+
+    -- NAME OF THE LOG FILE
+     LOGFILE1_IN := 'sprinbatch_data_purge'||TO_CHAR(TODAY_DATE,'DDMMYYYY_HH24MISS')||'.log';
+
+     FHANDLE := UTL_FILE.FOPEN(DIR_NAME_IN,LOGFILE1_IN,'a');
+     UTL_FILE.PUT_LINE(FHANDLE,'SPRINGBATCH DATA purge Started');
